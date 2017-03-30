@@ -24,9 +24,10 @@ public class Grade {
 		}
 	}
 	public void jogar(Jogada jogada, int x, int y, ServidorThread jogador) throws JogadaInvalidaException {
-		if (tabuleiro[x][y] == Jogada.VAZIO) {
+		if ((tabuleiro[x][y] == Jogada.VAZIO) && jogador == jogadores.get(indiceJogadorAtual)) {
 			tabuleiro[x][y] = jogada;
 			numeroDeJogadas++;
+			indiceJogadorAtual = (indiceJogadorAtual + 1) % jogadores.size();
 		} else {
 			throw new JogadaInvalidaException();
 		}
