@@ -21,19 +21,6 @@ public class Servidor {
 		
 		t1.start();
 		t2.start();
-		
-	
-		
-		
 
-		/*while(true) {
-			Socket socketConexao = socketRecepcao.accept(); //chamada bloqueante
-			BufferedReader doCliente = new BufferedReader(new InputStreamReader(socketConexao.getInputStream())); //espera no formato caracter,x,y
-			String line = doCliente.readLine();
-			String[] args = line.split(",");
-			grade.jogar(Jogada.valueOf(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-			PrintWriter pw = new PrintWriter(socketConexao.getOutputStream());
-			pw.println(grade.toString());
-		}*/
 	}
 }
