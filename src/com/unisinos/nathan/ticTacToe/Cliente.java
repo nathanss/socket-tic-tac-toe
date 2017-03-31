@@ -13,16 +13,20 @@ public class Cliente {
 
 		BufferedReader doUsuario = new BufferedReader(new InputStreamReader(System.in));
 
-		@SuppressWarnings("resource")
-		Socket socketCliente = new Socket("127.0.0.1", socket);
-		DataOutputStream paraServidor = new DataOutputStream(socketCliente.getOutputStream());
-		ObjectInputStream doServidor = new ObjectInputStream(socketCliente.getInputStream());
+		
+		
+
 		while (true) {
+			Socket socketCliente = new Socket("127.0.0.1", socket);
+			DataOutputStream paraServidor = new DataOutputStream(socketCliente.getOutputStream());
+			ObjectInputStream doServidor = new ObjectInputStream(socketCliente.getInputStream());
 			System.out.println("Digite a jogada: ");
 			input = doUsuario.readLine();
 			paraServidor.writeBytes(input + "\n");
+			paraServidor.flush();
 			Mensagem mensagem = (Mensagem) doServidor.readObject();
 			System.out.println(mensagem.getTexto());
+
 		}
 	}
 }
