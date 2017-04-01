@@ -76,7 +76,7 @@ public class Grade {
 	private boolean aindaHaEspaco() {
 		for (int i = 0; i < tabuleiro.length; i++) {
 			for (int j = 0; j < tabuleiro[i].length; j++) {
-				if (tabuleiro[i][j] != Jogada.VAZIO) {
+				if (tabuleiro[i][j] == Jogada.VAZIO) {
 					return true;
 				}
 			}
