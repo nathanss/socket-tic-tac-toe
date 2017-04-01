@@ -27,24 +27,25 @@ public class ServidorThread implements Runnable {
 				BufferedReader doCliente = new BufferedReader(new InputStreamReader(socketConexao.getInputStream())); //espera no formato caracter,x,y
 				ObjectOutputStream paraCliente = new ObjectOutputStream(socketConexao.getOutputStream());
 				String line = doCliente.readLine();
-				String[] args = line.split(",");
+				
 				Mensagem mensagem;
 				try {
-					grade.jogar(Jogada.valueOf(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]), this);
-					mensagem = new Mensagem(grade.toString());
-					
+					if (grade.jogoAcabou()) {
+						mensagem = new Mensagem("O jogo acabou! O algarismo vencedor foi o " + 
+							grade.getAlgarismoGanhador() + "\n" + 
+							grade.toString());
+					} else {
+						if (!line.equals("")) {
+							String[] args = line.split(",");
+							grade.jogar(Jogada.valueOf(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]), this);
+						}
+						mensagem = new Mensagem(grade.toString());
+					}
 				} catch (JogadaInvalidaException e) {
-					mensagem = new Mensagem("Jogada inválida!");
+						mensagem = new Mensagem("Jogada inválida! \n" + grade.toString());
 				}
 				paraCliente.writeObject(mensagem);
 			}
-			
-			
-			
-			
-			
-			
-			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
