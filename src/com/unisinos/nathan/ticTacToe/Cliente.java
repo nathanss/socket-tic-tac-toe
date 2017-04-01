@@ -9,8 +9,8 @@ import java.net.Socket;
 public class Cliente {
 	public static void main(String argv[]) throws Exception {
 		String input;
-		int socket = 6789;
-
+		int socket = argv.length > 0 ? Integer.parseInt(argv[0]) : 6789;
+		
 		BufferedReader doUsuario = new BufferedReader(new InputStreamReader(System.in));
 
 		
