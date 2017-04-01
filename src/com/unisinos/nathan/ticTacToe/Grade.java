@@ -47,7 +47,7 @@ public class Grade {
 		return !aindaHaEspaco() || alguemGanhou();
 	}
 	private boolean alguemGanhou() {
-		for (int i = 0; i < tabuleiro.length; i++) { //olhando as colunas
+		for (int i = 0; i < tabuleiro.length; i++) { //olhando as linhas
 			if (tabuleiro[i][0] != Jogada.VAZIO &&tabuleiro[i][0] == tabuleiro[i][1] && tabuleiro[i][1]  == tabuleiro[i][2]) {
 				this.algarismoGanhador = tabuleiro[i][0];
 				return true;
@@ -60,12 +60,12 @@ public class Grade {
 			}
 		}
 		
-		if (tabuleiro[0][0] != Jogada.VAZIO && tabuleiro[0][0] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][2]) {
+		if (tabuleiro[0][0] != Jogada.VAZIO && tabuleiro[0][0] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][2]) { //diagonal principal
 			this.algarismoGanhador = tabuleiro[0][0];
 			return true;
 		}
 		
-		if (tabuleiro[0][2] != Jogada.VAZIO && tabuleiro[0][2] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][0]) {
+		if (tabuleiro[0][2] != Jogada.VAZIO && tabuleiro[0][2] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][0]) { //diagonal secundária
 			this.algarismoGanhador = tabuleiro[0][2];
 			return true;
 		}
