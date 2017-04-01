@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Grade {
 	Jogada[][] tabuleiro;
 	private Jogada algarismoGanhador;
-	private int numeroDeJogadas;
 	private ArrayList<ServidorThread> jogadores;
 	private int indiceJogadorAtual;
 	
@@ -13,7 +12,6 @@ public class Grade {
 		return algarismoGanhador;
 	}
 	public Grade(ArrayList<ServidorThread> jogadores) {
-		numeroDeJogadas = 0;
 		indiceJogadorAtual = 0;
 		this.jogadores = jogadores;
 		tabuleiro = new Jogada[3][3];
@@ -26,7 +24,6 @@ public class Grade {
 	public void jogar(Jogada jogada, int x, int y, ServidorThread jogador) throws JogadaInvalidaException {
 		if ((tabuleiro[x][y] == Jogada.VAZIO) && jogador == jogadores.get(indiceJogadorAtual)) {
 			tabuleiro[x][y] = jogada;
-			numeroDeJogadas++;
 			indiceJogadorAtual = (indiceJogadorAtual + 1) % jogadores.size();
 		} else {
 			throw new JogadaInvalidaException();
